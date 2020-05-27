@@ -1,0 +1,922 @@
+$color-white: #ffffff;
+$color-black: #000000;
+
+$color-text-grey: #707070;
+$color-text-grey-2: #333333;
+$color-slider-dot: #CCCCCC;
+
+$color-text-dark: #151515;
+$color-text-dark-2: #505050;
+
+$color-main-active: #FEE040;
+$color-bg-dark: rgb(10, 65, 104);
+$color-bg-grey: #F5F5F5;
+$color-bg-light: rgb(0, 78, 134);
+
+$width-desktop: 1440px;
+$width-laptop: 1200px;
+$width-tablet: 1024px;
+$width-md: 768px;
+$width-sm: 480px;
+
+$padding-desktop: 0 20px;
+
+@font-face {
+  font-family: 'Proxima Nova Regular';
+  src: url('../fonts/ProximaNova-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy Regular';
+  src: url('../fonts/Gilroy-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bebas Neue Regular';
+  src: url('../fonts/BebasNeueRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin d-flex($justify-content: normal, $align-items: normal, $direction: row){
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  flex-direction: $direction;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 16px;
+  font-family: 'Proxima Nova Regular', sans-serif;
+  @media only screen and (max-width: $width-laptop) {
+    font-size: 14px;
+  }
+  @media only screen and (max-width: $width-tablet) {
+    font-size: 12px;
+  }
+}
+
+.container {
+  &__outer {
+    max-width: 1920px;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+  &__inner {
+    max-width: 1420px;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+  &__header {
+    background: url("../img/header-bg.jpg") no-repeat;
+    background-size: cover;
+    &--image-bg {
+      background: linear-gradient(180deg, rgba(0, 78, 134, 0.8) 0%, rgba(10, 65, 104, 0.8) 100%);
+    }
+  }
+  &__purpose {
+    background: linear-gradient(to right, $color-white 50% , $color-bg-grey 50%, $color-bg-grey 100%);
+    @media only screen and (max-width: $width-md) {
+      background: linear-gradient(to bottom, $color-white 50% , $color-bg-grey 50%, $color-bg-grey 100%);
+    }
+  }
+  &__services {
+    overflow: hidden;
+    background: url("../img/services-bg.jpg") no-repeat;
+    background-size: cover;
+    &--image-bg {
+      background: linear-gradient(180deg, rgba(0, 78, 134, 0.8) 0%, rgba(10, 65, 104, 0.8) 100%);
+    }
+  }
+}
+
+.header {
+  height: 80px;
+  @include d-flex(normal, center);
+  @media only screen and (max-width: $width-desktop) {
+    padding: $padding-desktop;
+  }
+  @media only screen and (max-width: $width-md) {
+    flex-direction: column;
+    padding: 20px;
+  }
+}
+
+.menu-burger {
+  position: relative;
+  height: 22px;
+  width: 40px;
+  cursor: pointer;
+  background-color: transparent;
+  span,
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background-color: $color-white;
+    opacity: 1;
+  }
+  span {
+    width: 20%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 16px solid $color-main-active;
+    border-right: 16px solid $color-main-active;
+    background-color: transparent;
+  }
+  &:before {
+    top: 0;
+  }
+  &:after {
+    top: calc(100% - 2px);
+  }
+}
+
+.logo {
+  margin-left: 80px;
+  &__title {
+    font-size: 0;
+  }
+  @media only screen and (max-width: $width-sm) {
+    margin-left: 20px;
+  }
+}
+
+.section {
+  @include d-flex();
+  &--48fr {
+    flex: 48;
+  }
+  &--23fr {
+    flex: 23;
+    @include d-flex(space-between)
+  }
+  @media only screen and (max-width: $width-laptop) {
+    &--48fr {
+      flex: 4;
+    }
+    &--23fr {
+      flex: 3;
+      align-items: center;
+    }
+  }
+  @media only screen and (max-width: $width-md) {
+    &--48fr {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    &--23fr {
+      width: 100%;
+    }
+  }
+}
+
+.contact {
+  &:first-child {
+    text-align: left;
+  }
+  &:last-child {
+    text-align: right;
+  }
+  &__title {
+    font-size: .75rem;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    color: $color-white;
+    opacity: 0.5;
+  }
+  &__mail {
+    font-size: .875rem;
+    line-height: 12px;
+    letter-spacing: -0.5px;
+    color: $color-main-active;
+    text-decoration: none;
+  }
+  &__phone {
+    font-size: 1.25rem;
+    line-height: 24px;
+    color: $color-white;
+    text-decoration: none;
+  }
+}
+
+.icon {
+  &__mail {
+    margin-right: 9px;
+  }
+  &__phone {
+    margin-right: 7px;
+  }
+}
+
+.work {
+  position: relative;
+  padding: 128px 0 60px;
+  &__wrapper {
+    padding: 0 0 235px;
+    @include d-flex()
+  }
+  &__video {
+    position: absolute;
+    bottom: 68px;
+    right: 10px;
+    .video__announce {
+      width: 100%;
+      height: auto;
+    }
+  }
+  @media only screen and (max-width: $width-desktop) {
+    padding: 100px 20px 60px;
+    &__video {
+      width: 180px;
+    }
+  }
+  @media only screen and (max-width: $width-laptop) {
+    &__wrapper {
+      padding: 0 0 150px;
+    }
+    &__video {
+      width: 150px;
+      bottom: 120px;
+    }
+  }
+  @media only screen and (max-width: $width-tablet) {
+    padding: 70px 0 40px;
+    &__wrapper {
+      padding: 0 0 100px;
+    }
+  }
+  @media only screen and (max-width: $width-md) {
+    &__wrapper {
+      flex-direction: column;
+      padding: 0 0 50px;
+    }
+  }
+  @media only screen and (max-width: $width-sm) {
+    &__video {
+      width: 100px;
+      bottom: 20px;
+    }
+  }
+}
+
+.slogan {
+  padding-left: 120px;
+  &__title {
+    font-family: 'Gilroy Regular', sans-serif;
+    font-size: 2.625rem;
+    line-height: 51px;
+    letter-spacing: -0.5px;
+    color: $color-white;
+    font-weight: bold;
+  }
+  &__subtitle {
+    font-size: 20px;
+    line-height: 34px;
+    color: $color-white;
+    opacity: 0.7;
+    margin-top: 38px;
+  }
+  @media only screen and (max-width: $width-laptop) {
+    padding: $padding-desktop;
+    box-sizing: border-box;
+  }
+  @media only screen and (max-width: $width-tablet) {
+    &__subtitle {
+      margin: 20px 0;
+    }
+  }
+}
+
+.btn {
+  border-radius: 2px;
+  border: 2px solid $color-main-active;
+  background: $color-main-active;
+  padding: 29px 57px 26px 58px;
+  cursor: pointer;
+  &__icon {
+    margin-right: 12px;
+    vertical-align: middle;
+  }
+  &__text {
+    font-family: "Gilroy Regular", sans-serif;
+    font-size: .75rem;
+    line-height: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $color-black;
+    font-weight: bold;
+  }
+  &:hover {
+    border: 2px solid $color-black;
+    transition: border .5s;
+  }
+  @media only screen and (max-width: $width-laptop) {
+    padding: 15px 25px;
+  }
+}
+
+.offer {
+  padding-right: 60px;
+  @include d-flex(normal, flex-start, column);
+  &__desc {
+    margin-top: 40px;
+    font-size: 0.9375rem;
+    line-height: 1.87;
+    color: $color-white;
+  }
+  @media only screen and (max-width: $width-laptop) {
+    padding: $padding-desktop;
+    box-sizing: border-box;
+  }
+  @media only screen and (max-width: $width-tablet) {
+    &__desc {
+      margin-top: 20px;
+      max-width: 80%;
+    }
+  }
+}
+
+.steps {
+  @include d-flex(start);
+  &__item:not(:last-child) {
+    margin-right: 100px;
+  }
+  @media only screen and (max-width: $width-tablet) {
+    padding: $padding-desktop;
+    &__item:not(:last-child) {
+      margin-right: 40px;
+    }
+  }
+  @media only screen and (max-width: $width-md) {
+    flex-direction: column;
+    &__item:not(:last-child) {
+      margin: 0 0 20px;
+    }
+  }
+}
+
+.step {
+  @include d-flex(normal, center);
+  &__number {
+    margin-right: 30px;
+  }
+  &__desc {
+    max-width: 180px;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    letter-spacing: -0.5px;
+    color: $color-white;
+  }
+  @media only screen and (max-width: $width-tablet) {
+    &__number {
+      margin-right: 20px;
+    }
+  }
+}
+
+.purpose {
+  position: relative;
+  padding: 100px 0 90px;
+  @include d-flex(space-between);
+  &__item {
+    max-width: 460px;
+  }
+  &__equipment {
+    max-width: 23%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @media only screen and (max-width: $width-desktop) {
+    padding: 80px 20px;
+  }
+  @media only screen and (max-width: $width-laptop) {
+    padding: 40px 20px;
+  }
+  @media only screen and (max-width: $width-tablet) {
+    &__item {
+      max-width: 40%;
+    }
+  }
+  @media only screen and (max-width: $width-md) {
+    flex-direction: column;
+    &__item {
+      max-width: 100%;
+      padding-bottom: 40px;
+    }
+    &__equipment {
+      display: none;
+    }
+  }
+}
+
+.promise {
+  &__title {
+    font-family: "Gilroy Regular", sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.31;
+    letter-spacing: -0.5px;
+    color: $color-text-dark;
+    margin-bottom: 50px;
+  }
+  &__subtitle {
+    font-size: 1.125rem;
+    line-height: 1.56;
+    letter-spacing: -0.5px;
+    color: $color-text-grey;
+    opacity: 0.7;
+  }
+  @media only screen and (max-width: $width-tablet) {
+    &__title {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.benefit {
+  @include d-flex(center, flex-start, column);
+  &__text {
+    font-size: 1.5rem;
+    line-height: 1.42;
+    letter-spacing: -0.5px;
+    color: $color-text-dark;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+}
+
+.list {
+  .list__item {
+    position: relative;
+    font-size: 1.125rem;
+    line-height: 1.44;
+    letter-spacing: -0.5px;
+    color: $color-text-grey-2;
+    opacity: 0.7;
+    list-style: none;
+    padding: 10px 0 10px 50px;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      left: 0;
+      background: url("../img/check.svg") no-repeat;
+    }
+  }
+}
+
+.services {
+  padding: 100px 0 0;
+  &__title {
+    font-family: 'Bebas Neue Regular', sans-serif;
+    font-size: 1.25rem;
+    line-height: 16px;
+    letter-spacing: 20px;
+    text-transform: uppercase;
+    color: $color-main-active;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  &__subtitle {
+    font-family: "Gilroy Regular", sans-serif;
+    font-size: 2rem;
+    line-height: 1.31;
+    letter-spacing: -0.5px;
+    color: $color-white;
+    text-align: center;
+    margin-bottom: 45px;
+  }
+  &__type {
+    display: grid;
+    grid-template-columns: repeat(4, 400px);
+    grid-gap: 80px;
+  }
+  @media only screen and (max-width: $width-desktop) {
+    &__type {
+      grid-template-columns: repeat(4, minmax(200px, 400px));
+      grid-gap: 50px;
+      padding: $padding-desktop;
+    }
+  }
+  @media only screen and (max-width: $width-laptop) {
+    padding: 70px 0 0;
+  }
+  @media only screen and (max-width: $width-tablet) {
+    &__type {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 30px 50px;
+      padding: $padding-desktop;
+    }
+  }
+  @media only screen and (max-width: $width-md) {
+    &__type {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
+
+.service {
+  @include d-flex(normal, normal, column);
+  &__img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  &:last-child {
+    img {
+      width: auto;
+    }
+  }
+  &__title {
+    font-size: 1.5rem;
+    line-height: 1.17;
+    letter-spacing: -0.5px;
+    color: $color-white;
+    margin: 30px 0 20px;
+  }
+  &__subtitle {
+    width: 90%;
+    font-size: 1rem;
+    line-height: 1.62;
+    letter-spacing: -0.5px;
+    color: $color-white;
+    opacity: 0.7;
+    margin-bottom: 30px;
+  }
+  &__more {
+    margin-top: auto;
+    font-family: 'Bebas Neue Regular', sans-serif;
+    font-size: 1.25rem;
+    line-height: 16px;
+    letter-spacing: 7px;
+    color: $color-main-active;
+    text-decoration: none;
+    cursor: pointer;
+    margin-bottom: 60px;
+  }
+  @media only screen and (max-width: $width-desktop) {
+    &__subtitle {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  @media only screen and (max-width: $width-laptop) {
+    &__img {
+      height: 150px;
+    }
+    &__title {
+      margin: 20px 0 10px;
+    }
+  }
+  @media only screen and (max-width: $width-tablet) {
+    &__more {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.progress {
+  width: 100%;
+  &::-webkit-progress-value {
+    background: linear-gradient(270deg, $color-main-active 0%, rgba(254, 224, 64, 0) 100%);
+  }
+  &::-webkit-progress-bar {
+    background: transparent;
+  }
+  &[value]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 4px;
+  }
+  border-radius: 0;
+  margin-bottom: 80px;
+  @media only screen and (max-width: $width-laptop) {
+    margin-bottom: 40px;
+  }
+}
+
+.process {
+  padding: 100px 0;
+  &__title {
+    font-family: "Bebas Neue Regular", sans-serif;
+    font-weight: bold;
+    font-size: 5rem;
+    line-height: 64px;
+    text-align: center;
+    letter-spacing: 5px;
+    background: -webkit-linear-gradient(rgba(0, 78, 134, 0.4) 0%, rgba(0, 78, 134, 0.9) 100%);;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  &__subtitle {
+    font-family: "Gilroy Regular", sans-serif;
+    font-weight: bold;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    text-align: center;
+    color: $color-text-dark-2;
+    padding-top: 35px;
+  }
+  @media only screen and (max-width: $width-md) {
+    padding: 50px 0;
+  }
+}
+
+.process-step {
+  padding: 80px 0 70px;
+  box-sizing: border-box;
+  @include d-flex(normal, normal, column);
+  &__wrapper-title {
+    @include d-flex();
+  }
+  &__marker {
+    height: fit-content;
+    font-family: "Proxima Nova Regular", sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 1.44;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: $color-text-dark;
+    background: $color-main-active;
+    padding: 4px 10px;
+  }
+  &__title {
+    font-family: "Proxima Nova Regular", sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 1.42;
+    letter-spacing: -0.5px;
+    color: $color-text-dark;
+  }
+  &__subtitle {
+    font-family: "Proxima Nova Regular", sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.44;
+    letter-spacing: -0.5px;
+    color: $color-text-grey-2;
+    opacity: 0.7;
+    margin: 25px 0 30px;
+  }
+  @media only screen and (max-width: $width-laptop) {
+    padding: 40px 0 30px;
+  }
+  @media only screen and (max-width: $width-tablet) {
+    &__wrapper-title {
+      @include d-flex(normal, center, column);
+    }
+    &__marker {
+      margin-bottom: 20px;
+    }
+    &__subtitle {
+      margin: 10px 0 15px;
+    }
+  }
+}
+
+.step-1 {
+  @include d-flex();
+  &__slider {
+    flex: 1;
+    position: relative;
+    background-image: url("../img/process-step-1.jpg");
+    background-size: cover;
+    padding-left: 70px;
+  }
+  &__desc {
+    flex: 1;
+    padding-left: 70px;
+    background: $color-bg-grey;
+  }
+  .process-step__marker {
+    margin-right: 20px;
+  }
+  .process-step__subtitle {
+    max-width: 460px;
+  }
+  @media only screen and (max-width: $width-laptop) {
+    &__slider {
+      padding: 20px;
+    }
+    &__desc {
+      padding: 20px;
+    }
+  }
+  @media only screen and (max-width: $width-md) {
+    flex-direction: column-reverse;
+  }
+}
+
+.review {
+  @include d-flex();
+  &__img {
+    max-width: 70px;
+    max-height: 70px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    border: 8px solid white;
+    border-radius: 50%;
+    box-sizing: border-box;
+    margin: 0 30px auto 0;
+  }
+  &__quote {
+    max-width: 380px;
+    display: inline-block;
+    font-family: "Proxima Nova Regular", sans-serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: -0.5px;
+    color: $color-text-dark-2;
+    opacity: 0.7;
+    margin-bottom: 20px;
+  }
+  &__author {
+    font-family: "Proxima Nova Regular", sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 1.62;
+    letter-spacing: -0.5px;
+    color: $color-text-dark;
+    opacity: 0.7;
+    &--name {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.slider {
+  position: relative;
+  padding-bottom: 50px;
+  &__dot-container {
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    @include d-flex();
+  }
+  &__dot {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: $color-slider-dot;
+    cursor: pointer;
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+    &--active {
+      width: 40px;
+      background: $color-main-active;
+    }
+  }
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(5, max(340px));
+    grid-gap: 20px;
+  }
+  @media only screen and (max-width: $width-desktop) {
+    &__content {
+      grid-template-columns: repeat(5, minmax(150px, 300px));
+      padding: $padding-desktop;
+    }
+  }
+  @media only screen and (max-width: $width-tablet) {
+    &__content {
+      grid-template-columns: repeat(4, 1fr);
+      padding: $padding-desktop;
+    }
+    &__item:last-child {
+      display: none;
+    }
+  }
+  @media only screen and (max-width: $width-md) {
+    &__content {
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 60px;
+    }
+  }
+}
+
+.step-2 {
+  overflow: hidden;
+  @include d-flex(normal, center, column);
+  .process-step__wrapper-title {
+   @include d-flex(normal, center, column);
+  }
+  .process-step__marker {
+    align-self: center;
+    margin-bottom: 20px;
+  }
+  .process-step__subtitle {
+    max-width: 800px;
+    margin: 25px auto 100px;
+    text-align: center;
+  }
+  @media only screen and (max-width: $width-tablet) {
+    .process-step__subtitle {
+      max-width: 80%;
+      margin: 25px auto 60px;
+    }
+  }
+}
+
+.instr {
+  background: $color-bg-grey;
+  padding: 0 40px 33px;
+  @include d-flex(normal, center, column);
+  &__img {
+    position: relative;
+    top: -60px;
+  }
+  &__desc {
+    font-family: "Proxima Nova Regular", sans-serif;
+    font-size: 1rem;
+    line-height: 1.37;
+    text-align: center;
+    letter-spacing: -0.5px;
+    color: $color-text-dark;
+    opacity: 0.7;
+  }
+  @media only screen and (max-width: $width-desktop) {
+    padding: 0 20px 20px;
+    &__img {
+      height: 200px;
+    }
+  }
+  @media only screen and (max-width: $width-tablet) {
+    &__img {
+      height: 150px;
+      top: -40px;
+    }
+  }
+}
+
+.step-3 {
+  @include d-flex();
+  &__desc {
+    flex: 1;
+    padding-right: 130px;
+    background: $color-bg-grey;
+    align-items: flex-end;
+    .process-step__subtitle {
+      max-width: 460px;
+    }
+  }
+  &__img {
+    flex: 1;
+    background: url("../img/process-step-3.jpg") no-repeat;
+    background-size: cover;
+    padding-right: 130px;
+  }
+  .align-right {
+    max-width: 500px;
+  }
+  .process-step__marker {
+    margin-right: 20px;
+  }
+  @media only screen and (max-width: $width-desktop) {
+    &__desc {
+      padding-right: 50px;
+    }
+    &__img {
+      padding-right: 50px;
+    }
+    .align-right {
+      max-width: 90%;
+      margin: 0 auto;
+    }
+  }
+  @media only screen and (max-width: $width-laptop) {
+    &__desc {
+      padding: 20px;
+    }
+    &__img {
+      padding: 20px;
+    }
+  }
+  @media only screen and (max-width: $width-md) {
+    flex-direction: column;
+    &__img {
+      min-height: 100px;
+    }
+  }
+}
+
+
