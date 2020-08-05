@@ -5,6 +5,7 @@ $color-bg-header: rgba(16, 16, 29, 0.9);
 $color-bg-input: rgba(255, 255, 255, 0.851);
 $color-bg-input-focus: #3d4050;
 $color-bg-range: rgba(255, 255, 255, 0.702);
+$color-bg-file: rgba(255, 255, 255, 0.949);
 
 $color-dark-main: #272733;
 $color-active: #3e9cdc;
@@ -17,8 +18,10 @@ $color-select-active: #42a9ed;
 
 $color-border-btn: #6f6d7b;
 $color-border-step: #286690;
+$color-border-footer: #c3c3c3;
 
 $header-height: 100px;
+$footer-height: 86px;
 
 $width-desktop: 1440px;
 $width-laptop: 1200px;
@@ -172,6 +175,9 @@ html {
     border-color: $color-white;
     background: $color-active;
   }
+  &__order {
+    margin-right: 25px;
+  }
 }
 
 .scheme {
@@ -301,6 +307,7 @@ html {
 
 .range {
   &__desc {
+    padding-bottom: 20px;
     @include font(1.125rem, 22px, $color-white);
     @include d-flex(space-between, center);
   }
@@ -310,5 +317,58 @@ html {
     background-color: $color-bg-range;
     height: 7px;
     border-radius: 3px;
+  }
+}
+
+.file {
+  text-transform: uppercase;
+  text-align: center;
+  background: $color-bg-file;
+  cursor: pointer;
+  display: inline-block;
+  @include font(0.9375rem, 22px, $color-dark-main);
+  &__input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+  &:hover {
+    background-color: $color-bg-range;
+  }
+  & * {
+    pointer-events: none;
+  }
+}
+
+.footer {
+  height: $footer-height;
+  background: $color-bg-input-focus;
+  &__container {
+    height: 100%;
+    @include d-flex(space-between, center);
+    & > * {
+      border-left: 1px solid $color-border-footer;
+    }
+  }
+  &__section {
+    width: available;
+    @include d-flex(space-around, center);
+  }
+  &__copyright {
+    flex: 3;
+    border: 0;
+    @include font(0.8125rem, 14px, $color-white);
+  }
+  &__wallets {
+    flex: 4;
+  }
+  &__contacts {
+    flex: 3;
+  }
+  .footer__item {
+    @include d-flex();
   }
 }

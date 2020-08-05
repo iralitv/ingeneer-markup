@@ -120,6 +120,8 @@ html {
     color: #ffffff;
     border-color: #ffffff;
     background: #3e9cdc; }
+  .btn__order {
+    margin-right: 25px; }
 
 .scheme {
   background-image: url(images/dfde32f182ffb9b0887f05ad43330c14.png);
@@ -239,6 +241,7 @@ html {
     color: #ffffff; }
 
 .range__desc {
+  padding-bottom: 20px;
   font-size: 1.125rem;
   line-height: 22px;
   color: #ffffff;
@@ -253,3 +256,57 @@ html {
   background-color: rgba(255, 255, 255, 0.702);
   height: 7px;
   border-radius: 3px; }
+
+.file {
+  text-transform: uppercase;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.949);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.9375rem;
+  line-height: 22px;
+  color: #272733; }
+  .file__input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1; }
+  .file:hover {
+    background-color: rgba(255, 255, 255, 0.702); }
+  .file * {
+    pointer-events: none; }
+
+.footer {
+  height: 86px;
+  background: #3d4050; }
+  .footer__container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row; }
+    .footer__container > * {
+      border-left: 1px solid #c3c3c3; }
+  .footer__section {
+    width: available;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row; }
+  .footer__copyright {
+    flex: 3;
+    border: 0;
+    font-size: 0.8125rem;
+    line-height: 14px;
+    color: #ffffff; }
+  .footer__wallets {
+    flex: 4; }
+  .footer__contacts {
+    flex: 3; }
+  .footer .footer__item {
+    display: flex;
+    justify-content: normal;
+    align-items: normal;
+    flex-direction: row; }

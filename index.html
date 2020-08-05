@@ -106,7 +106,10 @@
               </p>
               <input type="range" name="user-range" class="range__input" min="0" max="100" step="1" value="50">
             </div>
-            <input name="user-file" type="file" class="form__file">
+          <label for="file" class="form__file file form__input">
+            Прикрепить
+            <input id="file" name="user-file" type="file" class="file__input" data-multiple-caption="{count} files selected" multiple>
+          </label>
           <input type="submit" value="Отправить" class="btn btn--blue btn__send form__btn">
         </form>
       </div>
@@ -114,8 +117,8 @@
   </main>
   <footer class="footer">
     <div class="container__inner footer__container">
-      <p class="footer__copyright">© 2018 «LoremIpsum.net» Все права защищены.</p>
-      <div class="footer__wallets">
+      <p class="footer__copyright footer__section">© 2018 «LoremIpsum.net» Все права защищены.</p>
+      <div class="footer__wallets footer__section">
         <a href="#" class="footer__item wallet" target="_blank">
           <img src="" alt="" class="footer__img">
           <p class="footer__title">Qiwi wallet</p>
@@ -129,7 +132,7 @@
           <p class="footer__title">Web Money</p>
         </a>
       </div>
-      <div class="footer__contacts contacts">
+      <div class="footer__contacts contacts footer__section">
         <a href="mailto:info@ipsum228.com" class="footer__item email" target="_blank">
           <img src="" alt="" class="footer__img">
           <p class="footer__title">info@ipsum228.com</p>
