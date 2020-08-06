@@ -21,15 +21,16 @@ $color-border-step: #286690;
 $color-border-footer: #c3c3c3;
 
 $header-height: 100px;
+$header-height-tablet: 70px;
 $footer-height: 86px;
 
-$width-desktop: 1440px;
-$width-laptop: 1200px;
 $width-tablet: 1024px;
+$width-tablet-sm: 912px;
 $width-md: 768px;
 $width-sm: 480px;
 
-$padding-desktop: 0 20px;
+$padding-tablet: 20px;
+$padding-md-container: 80px 20px;
 
 @font-face {
   font-family: 'Lato Regular';
@@ -48,6 +49,13 @@ $padding-desktop: 0 20px;
 @font-face {
   font-family: 'Lato Black';
   src: url('../fonts/Lato-Black.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Tahoma';
+  src: url('../fonts/Tahoma.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
 }
@@ -73,10 +81,10 @@ $padding-desktop: 0 20px;
 html {
   font-size: 16px;
   font-family: "Lato Regular", sans-serif;
-  @media only screen and (max-width: $width-laptop) {
+  @media only screen and (max-width: $width-tablet) {
     font-size: 14px;
   }
-  @media only screen and (max-width: $width-tablet) {
+  @media only screen and (max-width: $width-tablet-sm) {
     font-size: 12px;
   }
 }
@@ -101,6 +109,9 @@ html {
     height: 100%;
     @include d-flex(space-between, center)
   }
+  @media screen and (max-width: $width-tablet) {
+    height: $header-height-tablet;
+  }
 }
 
 .logo {
@@ -108,6 +119,9 @@ html {
   &__text {
     font-family: "Lato Black", sans-serif;
     @include font(1.75rem, 18px, $color-white);
+  }
+  &--burger {
+    display: none;
   }
 }
 
@@ -132,8 +146,126 @@ html {
     text-decoration: none;
     text-transform: uppercase;
     @include font(.8125rem, $line-height: 1, $color: $color-text-grey);
+    &--active {
+      color: $color-text-active-menu;
+    }
+  }
+  @media screen and (max-width: $width-tablet) {
+    &__link {
+      font-size: calc(1rem + 2vw);
+    }
+    &__item {
+      margin-left: 10px;
+    }
+  }
+  @media screen and (max-width: $width-sm) {
+    &__link {
+      font-size: calc(0.5rem + 2vw);
+    }
   }
 }
+
+/*------burger----------*/
+.burger-menu {
+  &__button {
+    display: none;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+    &--active .burger-menu__lines {
+      transform: rotate(90deg);
+    }
+  }
+  &__overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+  }
+  &--active{
+    & + .burger-menu__overlay {
+      display: block;
+    }
+    &.nav{
+      display: flex;
+      padding: 30px 20px 30px 70px;
+    }
+    .nav__menu{
+      @include d-flex(space-evently, normal, column);
+    }
+    .burger-menu__overlay {
+      display: block;
+    }
+  }
+  &__lines {
+    top: 50%;
+    &::before {
+      content: '';
+      top: 8px;
+    }
+    &::after {
+      content: '';
+      top: -8px;
+    }
+  }
+  &__lines::before,
+  &__lines::after,
+  &__lines {
+    position: absolute;
+    width: 25px;
+    height: 2px;
+    background: #fff;
+    transition: 0.4s;
+  }
+}
+
+@media screen and (max-width: $width-tablet) {
+  .container__inner,
+  .main .container__inner {
+    padding-left: $padding-tablet;
+    padding-right: $padding-tablet;
+  }
+  .nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100vh;
+    box-sizing: border-box;
+    background: #2D303A;
+    padding-top: 100px;
+    z-index: 15;
+  }
+  .logo__title--burger {
+    display: block;
+    font-size: 2rem;
+  }
+  .burger-menu__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  .burger-menu__button {
+    display: block;
+    z-index: 20;
+    position: relative;
+  }
+}
+
+@media only screen and (max-width: $width-md) {
+  .main .container__inner {
+    padding: $padding-md-container;
+  }
+}
+
+/*-----------general----------*/
 
 .banner {
   background: url("../img/header.png") no-repeat;
@@ -151,6 +283,11 @@ html {
     padding: 75px 0;
     @include font(1.25rem, 34px, $color-text-black);
   }
+  @media screen and (max-width: $width-tablet) {
+    &__container {
+      padding: calc(#{$header-height-tablet} + 50px) 0 100px;
+    }
+  }
 }
 
 .list__item {
@@ -164,19 +301,37 @@ html {
   border-radius: 4px;
   padding: 18px 10px 13px;
   text-transform: uppercase;
+  cursor: pointer;
   @include font(0.8125rem, 18px);
   &--white {
     color: $color-text-black;
     border-color: $color-border-btn;
     background: $color-white;
+    &:hover {
+      background: $color-bg-range;
+      color: $color-black;
+    }
   }
   &--blue {
     color: $color-white;
     border-color: $color-white;
     background: $color-active;
+    &:hover {
+      background: $color-select-active;
+    }
   }
   &__order {
     margin-right: 25px;
+  }
+  &__send {
+    font-size: 0.9375rem;
+  }
+  @media screen and (max-width: $width-sm) {
+    width: 100%;
+    font-size: 1.2rem;
+    &__order {
+      margin: 5px 0;
+    }
   }
 }
 
@@ -200,10 +355,18 @@ html {
   &__form {
     padding-top: 80px;
   }
+  @media only screen and (max-width: $width-sm) {
+    &__subtitle {
+      padding: $padding-tablet;
+    }
+  }
 }
 
 .steps {
   @include d-flex(space-between, flex-start);
+  @media only screen and (max-width: $width-sm) {
+    @include d-flex(space-between, center, column);
+  }
 }
 
 .step {
@@ -217,23 +380,60 @@ html {
     border-radius: 50%;
     background-color: $color-active;
     border: 5px solid $color-border-step;
-    @include d-flex(center, center);
     margin-bottom: 20px;
+    @include d-flex(center, center);
   }
   &__desc {
     text-align: center;
     @include font(1rem, 20px, $color-white);
   }
-}
-
-.step:not(:last-child) .step__wrapper::after {
-  content:".....";
-  position: absolute;
-  width: 100%;
-  font-size: 30px;
-  color: $color-white;
-  transform: translate(120%, -20%);
-  letter-spacing: 17px;
+  &__icon.fa {
+    @include font(2.25rem, 22px, $color-white);
+  }
+  &__icon--little.fa {
+    position: relative;
+    top: -20%;
+    margin-right: 2px;
+    @include font(1rem, 1, $color-white);
+  }
+  @media only screen and (max-width: $width-md) and (min-width: $width-sm) {
+    &__wrapper {
+      height: 50px;
+      width: 50px;
+    }
+    &__icon.fa {
+      font-size: 1.5rem;
+    }
+    &__icon--little.fa {
+      font-size: 0.7rem;
+    }
+  }
+  &:not(:last-child) .step__wrapper::after {
+    content:".....";
+    position: absolute;
+    width: 100%;
+    transform: translate(120%, -20%);
+    letter-spacing: 17px;
+    @include font(30px, 1, $color-white);
+    @media only screen and (max-width: $width-tablet-sm) {
+      font-size: 20px;
+      letter-spacing: 15px;
+    }
+  }
+  @media only screen and (max-width: $width-sm) {
+    padding: $padding-tablet;
+    &__wrapper {
+      margin-bottom: 10px;
+    }
+    &:not(:first-child) .step__wrapper::before {
+      content:".....";
+      position: absolute;
+      width: 100%;
+      transform: translate(-120%, -20%);
+      @include font(20px, 1, $color-white);
+      letter-spacing: 15px;
+    }
+  }
 }
 
 .form {
@@ -260,20 +460,18 @@ html {
   &__select {
     display: flex;
     position: relative;
-    &::after {
-      content: '\25BC';
+    .fa {
       position: absolute;
-      font-size: 1rem;
       top: 50%;
       right: 0;
       transform: translateY(-50%);
       padding: 0 1em;
       cursor: pointer;
       pointer-events: none;
-      color: $color-text-black;
       transition: .25s all ease;
+      @include font(1.25rem, 1, $color-text-black)
     }
-    &:hover::after {
+    &:hover .fa {
       color: $color-white;
     }
     &::-ms-expand {
@@ -286,6 +484,13 @@ html {
   &__btn {
     width: 100%;
     grid-column: 2;
+  }
+  @media only screen and (max-width: $width-md) {
+    grid-template-columns: 1fr;
+    &__range,
+    &__btn {
+      grid-column: 1;
+    }
   }
 }
 
@@ -317,6 +522,7 @@ html {
     background-color: $color-bg-range;
     height: 7px;
     border-radius: 3px;
+    outline: none;
   }
 }
 
@@ -325,8 +531,14 @@ html {
   text-align: center;
   background: $color-bg-file;
   cursor: pointer;
-  display: inline-block;
+  @include d-flex(center, center);
   @include font(0.9375rem, 22px, $color-dark-main);
+  &:hover {
+    background-color: $color-bg-range;
+  }
+  & * {
+    pointer-events: none;
+  }
   &__input {
     width: 0.1px;
     height: 0.1px;
@@ -335,17 +547,16 @@ html {
     position: absolute;
     z-index: -1;
   }
-  &:hover {
-    background-color: $color-bg-range;
-  }
-  & * {
-    pointer-events: none;
+  &__icon.fa {
+    margin-right: 15px;
+    @include font(1.25rem, 1, $color-dark-main);
   }
 }
 
 .footer {
   height: $footer-height;
   background: $color-bg-input-focus;
+  @include font(0.8125rem, 19px, $color-white);
   &__container {
     height: 100%;
     @include d-flex(space-between, center);
@@ -360,7 +571,6 @@ html {
   &__copyright {
     flex: 3;
     border: 0;
-    @include font(0.8125rem, 14px, $color-white);
   }
   &__wallets {
     flex: 4;
@@ -368,7 +578,45 @@ html {
   &__contacts {
     flex: 3;
   }
-  .footer__item {
-    @include d-flex();
+  &__item {
+    @include d-flex(normal, center);
+  }
+  @media only screen and (max-width: $width-md) {
+    &__container {
+      flex-direction: column-reverse;
+      padding: 10px 20px;
+      & > * {
+        border-left: 0;
+      }
+    }
+    &__section {
+      width: 100%;
+    }
+    &__wallets {
+      justify-content: space-between;
+    }
+    &__copyright {
+      color: $color-subtitle-light;
+    }
+  }
+}
+
+.share {
+  text-decoration: none;
+  &__title {
+    color: $color-white;
+  }
+  &__icon {
+    margin-right: 10px;
+    &--vk {
+      font-family: "Tahoma", sans-serif;
+      @include font(1.125rem, 1, $color-active);
+    }
+    &--email {
+      @include font(0.9375rem, 1, $color-active)
+    }
+  }
+  &:hover > .share__title {
+    color: $color-subtitle-light;
   }
 }

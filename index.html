@@ -5,21 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>test</title>
   <link rel='stylesheet' href='dist/style.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <header class="header">
     <div class="container__inner header__container">
-      <a href="#" class="logo">
-        <h1 class="logo__text title">LoremIpsum.<span class="title--color">Net</span></h1>
-      </a>
+      <div class="burger-menu__container">
+        <div class="burger-menu__button">
+          <span class="burger-menu__lines"></span>
+        </div>
+        <div class="logo">
+          <a href="#" class="logo">
+            <h1 class="logo__text title">LoremIpsum.<span class="title--color">Net</span></h1>
+          </a>
+        </div>
+      </div>
       <nav class="nav">
+        <a href="#" class="logo logo--burger">
+          <h1 class="logo__text title">LoremIpsum.<span class="title--color">Net</span></h1>
+        </a>
         <ul class="nav__menu menu">
-          <li class="menu__item"><a href="#" class="menu__link">Бизнес</a></li>
+          <li class="menu__item"><a href="#" class="menu__link menu__link--active">Бизнес</a></li>
           <li class="menu__item"><a href="#" class="menu__link">О нас</a></li>
           <li class="menu__item"><a href="#" class="menu__link">Цены</a></li>
           <li class="menu__item"><a href="#" class="menu__link">Оформить заказ</a></li>
         </ul>
       </nav>
+      <div class="burger-menu__overlay"></div>
     </div>
   </header>
   <main class="main">
@@ -52,33 +64,34 @@
         <div class="scheme__steps steps">
           <article class="steps__item step">
             <div class="step__wrapper">
-              <p class="step__img">te</p>
+              <i class="fa fa-search step__icon" aria-hidden="true"></i>
             </div>
             <p class="step__desc">Lorem ipsum dolor<br>
               sit amet</p>
           </article>
           <article class="steps__item step">
             <div class="step__wrapper">
-              <p class="step__img">te</p>
+              <i class="fa fa-percent step__icon" aria-hidden="true"></i>
             </div>
             <p class="step__desc">Сonsecteturadipiscing elit</p>
           </article>
           <article class="steps__item step">
             <div class="step__wrapper">
-              <p class="step__img">te</p>
+              <i class="fa fa-plus-circle step__icon step__icon--little" aria-hidden="true"></i>
+              <i class="fa fa-file-text-o step__icon" aria-hidden="true"></i>
             </div>
             <p class="step__desc">Sed do eiusmod tempor</p>
           </article>
           <article class="steps__item step">
             <div class="step__wrapper">
-              <p class="step__img">te</p>
+              <i class="fa fa-envelope-o step__icon" aria-hidden="true"></i>
             </div>
             <p class="step__desc">Esse cillum dolore<br>
               eu fugiat</p>
           </article>
           <article class="steps__item step">
             <div class="step__wrapper">
-              <p class="step__img">te</p>
+              <i class="fa fa-money step__icon" aria-hidden="true"></i>
             </div>
             <p class="step__desc">Excepteur sint occaecat<br>
               cupidatat non proident</p>
@@ -86,7 +99,7 @@
         </div>
         <form action="" class="scheme__form form">
           <div class="form__select">
-            <select name="system-type" id="" class="form__input type">
+            <select name="system-type" id="" class="js-example-basic-single form__input type">
               <option value="default" class="type__option" selected disabled>Выберите тип системы</option>
               <option value="first" class="type__option">Sed ut perspiatis</option>
               <option value="second" class="type__option">Nemo enim ipsam</option>
@@ -95,6 +108,7 @@
               <option value="fifth" class="type__option">Nemo enim ipsam</option>
               <option value="sixth" class="type__option">Et harum qidem</option>
             </select>
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
           </div>
             <input type="email" name="user-email" class="form__email form__input" placeholder="Ваш e-mail">
             <input type="text" name="user-name" class="form__name form__input" placeholder="Ваше имя">
@@ -104,10 +118,11 @@
                 <span class="range__desc--text">Sed ut perspiciatis, unde omnis iste natus</span>
                 <span class="range__desc--percentage">0 %</span>
               </p>
-              <input type="range" name="user-range" class="range__input" min="0" max="100" step="1" value="50">
+              <input type="range" name="user-range" class="range__input" min="0" max="100" step="1" value="0">
             </div>
           <label for="file" class="form__file file form__input">
-            Прикрепить
+            <i class="fa fa-file-text-o file__icon" aria-hidden="true"></i>
+            <span class="file__name">Прикрепить файл</span>
             <input id="file" name="user-file" type="file" class="file__input" data-multiple-caption="{count} files selected" multiple>
           </label>
           <input type="submit" value="Отправить" class="btn btn--blue btn__send form__btn">
@@ -119,31 +134,33 @@
     <div class="container__inner footer__container">
       <p class="footer__copyright footer__section">© 2018 «LoremIpsum.net» Все права защищены.</p>
       <div class="footer__wallets footer__section">
-        <a href="#" class="footer__item wallet" target="_blank">
-          <img src="" alt="" class="footer__img">
-          <p class="footer__title">Qiwi wallet</p>
+        <a href="#" class="footer__item share" target="_blank">
+          <img src="./src/img/qiwi_money.png" alt="qiwi money" class="share__icon share__icon--wallet">
+          <p class="share__title">Qiwi wallet</p>
         </a>
-        <a href="#" class="footer__item wallet" target="_blank">
-          <img src="" alt="" class="footer__img">
-          <p class="footer__title">Yandex Money</p>
+        <a href="#" class="footer__item share" target="_blank">
+          <img src="./src/img/yandex_money.png" alt="yandex money" class="share__icon share__icon--wallet">
+          <p class="share__title">Yandex Money</p>
         </a>
-        <a href="#" class="footer__item wallet" target="_blank">
-          <img src="" alt="" class="footer__img">
-          <p class="footer__title">Web Money</p>
+        <a href="#" class="footer__item share" target="_blank">
+          <img src="./src/img/web_money.svg" alt="web money" class="share__icon share__icon--wallet">
+          <p class="share__title">Web Money</p>
         </a>
       </div>
       <div class="footer__contacts contacts footer__section">
-        <a href="mailto:info@ipsum228.com" class="footer__item email" target="_blank">
-          <img src="" alt="" class="footer__img">
-          <p class="footer__title">info@ipsum228.com</p>
+        <a href="mailto:info@ipsum228.com" class="footer__item share" target="_blank">
+          <i class="fa fa-envelope-o share__icon share__icon--email" aria-hidden="true"></i>
+          <p class="share__title">info@ipsum228.com</p>
         </a>
-        <a href="#" class="footer__item email" target="_blank">
-          <img src="" alt="" class="footer__img">
-          <p class="footer__title">Мы вконтакте</p>
+        <a href="#" class="footer__item share" target="_blank">
+          <p class="share__icon share__icon--vk">В</p>
+          <p class="share__title">Мы вконтакте</p>
         </a>
       </div>
     </div>
   </footer>
   <script type="text/javascript" src="dist/bundle.js"></script>
+  <script>
+  </script>
 </body>
 </html>
