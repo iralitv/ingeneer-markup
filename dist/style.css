@@ -524,3 +524,62 @@ html {
       color: #3e9cdc; }
   .share:hover > .share__title {
     color: #bbbbbb; }
+
+.custom-select {
+  position: relative;
+  font-family: Arial; }
+
+.custom-select select {
+  display: none;
+  /*hide original SELECT element:*/ }
+
+.select-selected {
+  width: 100%;
+  line-height: 40px; }
+  .select-selected:hover, .select-selected.select-arrow-active {
+    color: #ffffff;
+    background: #3d4050; }
+
+/*style the items (options), including the selected item:*/
+.select-items div,
+.select-selected {
+  padding: 8px 16px;
+  cursor: pointer;
+  user-select: none; }
+
+.select-items > div {
+  color: #ffffff; }
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  max-height: 180px;
+  overflow: auto;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 9;
+  border: 1px solid #3d4050;
+  border-radius: 3px;
+  background-color: rgba(39, 39, 51, 0.9); }
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none; }
+
+.select-items div:hover,
+.select-items .same-as-selected {
+  color: #42a9ed; }
+
+::-webkit-scrollbar {
+  width: 7px; }
+
+::-webkit-scrollbar-thumb {
+  background: #3e9cdc;
+  border-radius: 3px; }
+
+::-webkit-scrollbar-track {
+  border-radius: 3px; }
+
+::-webkit-scrollbar-thumb:hover {
+  background: #42a9ed; }
