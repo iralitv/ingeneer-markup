@@ -496,22 +496,6 @@ html {
   }
 }
 
-.type {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
-  flex: 1;
-  outline: 0;
-  cursor: pointer;
-  background-image: none;
-  padding-right: 30px;
-  overflow-y: scroll;
-  &__option {
-    color: $color-white;
-  }
-}
-
 .range {
   &__desc {
     padding-bottom: 20px;
@@ -627,56 +611,51 @@ html {
 .custom-select {
   position: relative;
   font-family: Arial;
-}
-
-.custom-select select {
-  display: none; /*hide original SELECT element:*/
-}
-
-.select-selected {
-  width: 100%;
-  line-height: 40px;
-  &:hover,
-  &.select-arrow-active {
-    color: $color-white;
-    background: $color-bg-input-focus;
+  .select {
+    display: none; /*hide original SELECT element:*/
   }
 }
 
-/*style the items (options), including the selected item:*/
-.select-items div,
-.select-selected {
-  padding: 8px 16px;
-  cursor: pointer;
-  user-select: none;
-}
-
-.select-items > div {
-  color: $color-white;
-}
-
-/*style items (options):*/
-.select-items {
-  position: absolute;
-  max-height: 180px;
-  overflow: auto;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 9;
-  border: 1px solid $color-border-select;
-  border-radius: 3px;
-  background-color: $color-bg-select;
-}
-
-/*hide the items when the select box is closed:*/
-.select-hide {
-  display: none;
-}
-
-.select-items div:hover,
-.select-items .same-as-selected {
-  color: $color-select-active;
+.select {
+  &--selected {
+    width: 100%;
+    line-height: 40px;
+    padding: 8px 16px;
+    cursor: pointer;
+    user-select: none;
+    &:hover,
+    &.select__item--active {
+      color: $color-white;
+      background: $color-bg-input-focus;
+    }
+  }
+  &--hide {
+    display: none;
+  }
+  &--checked {
+    color: $color-select-active;
+  }
+  &__items {
+    position: absolute;
+    max-height: 180px;
+    overflow: auto;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 9;
+    border: 1px solid $color-border-select;
+    border-radius: 3px;
+    background-color: $color-bg-select;
+    & div {
+      padding: 8px 16px;
+      cursor: pointer;
+      user-select: none;
+      color: $color-white;
+      &:hover {
+        color: $color-select-active;
+      }
+    }
+  }
 }
 
 ::-webkit-scrollbar {
