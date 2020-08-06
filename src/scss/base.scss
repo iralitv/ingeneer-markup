@@ -680,6 +680,14 @@ html {
   }
   .step {
     flex: none;
+    width: 85%;
+    flex-direction: row;
+    justify-content: flex-start;
+    &__desc {
+      margin-left: 15px;
+      font-size: 1.5rem;
+      text-align: justify;
+    }
   }
 }
 

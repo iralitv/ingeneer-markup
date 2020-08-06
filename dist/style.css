@@ -573,7 +573,14 @@ html {
   .step:not(:first-child) .step__wrapper::before {
     opacity: 0; }
   .step {
-    flex: none; } }
+    flex: none;
+    width: 85%;
+    flex-direction: row;
+    justify-content: flex-start; }
+    .step__desc {
+      margin-left: 15px;
+      font-size: 1.5rem;
+      text-align: justify; } }
 
 .select--selected {
   width: 100%;
