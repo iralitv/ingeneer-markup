@@ -96,7 +96,7 @@ html {
       font-size: calc(1rem + 2vw); }
     .menu__item {
       margin-left: 10px; } }
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 576px) {
     .menu__link {
       font-size: calc(0.5rem + 2vw); } }
 
@@ -237,7 +237,7 @@ html {
     margin-right: 25px; }
   .btn__send {
     font-size: 0.9375rem; }
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 576px) {
     .btn {
       width: 100%;
       font-size: 1.2rem; }
@@ -262,7 +262,7 @@ html {
     color: #bbbbbb; }
   .scheme__form {
     padding-top: 80px; }
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 576px) {
     .scheme__subtitle {
       padding: 20px; } }
 
@@ -271,7 +271,7 @@ html {
   justify-content: space-between;
   align-items: flex-start;
   flex-direction: row; }
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 576px) {
     .steps {
       display: flex;
       justify-content: space-between;
@@ -313,7 +313,7 @@ html {
     font-size: 1rem;
     line-height: 1;
     color: #ffffff; }
-  @media only screen and (max-width: 768px) and (min-width: 480px) {
+  @media only screen and (max-width: 768px) and (min-width: 576px) {
     .step__wrapper {
       height: 50px;
       width: 50px; }
@@ -337,7 +337,7 @@ html {
     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
       .step:not(:last-child) .step__wrapper::after {
         transform: translate(55%, -60%); } }
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 576px) {
     .step {
       padding: 20px; }
       .step__wrapper {
