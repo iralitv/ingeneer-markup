@@ -98,7 +98,7 @@
           </article>
         </div>
         <form action="" class="scheme__form form">
-          <div class="form__select custom-select" style="width: 100%;">
+          <div class="ie-form__item form__select custom-select">
             <select name="system-type" id="" class="form__input select type">
               <option value="default" class="type__option" selected disabled>Выберите тип системы</option>
               <option value="first" class="type__option">Sed ut perspiatis</option>
@@ -112,22 +112,22 @@
             </select>
             <i class="fa fa-angle-down" aria-hidden="true"></i>
           </div>
-            <input type="email" name="user-email" class="form__email form__input" placeholder="Ваш e-mail">
-            <input type="text" name="user-name" class="form__name form__input" placeholder="Ваше имя">
+          <input type="email" name="user-email" class="ie-form__item form__email form__input" placeholder="Ваш e-mail">
+          <input type="text" name="user-name" class="ie-form__item form__name form__input" placeholder="Ваше имя">
 
-            <div class="form__range range">
-              <p class="range__desc">
-                <span class="range__desc--text">Sed ut perspiciatis, unde omnis iste natus</span>
-                <span class="range__desc--percentage">0 %</span>
-              </p>
-              <input type="range" name="user-range" class="range__input" min="0" max="100" step="1" value="0">
-            </div>
-          <label for="file" class="form__file file form__input">
+          <div class="form__range range">
+            <p class="range__desc">
+              <span class="range__desc--text">Sed ut perspiciatis, unde omnis iste natus</span>
+              <span class="range__desc--percentage">0 %</span>
+            </p>
+            <input type="range" name="user-range" class="range__input" min="0" max="100" step="1" value="0">
+          </div>
+          <label for="file" class="ie-form__item form__file file form__input">
             <i class="fa fa-file-text-o file__icon" aria-hidden="true"></i>
             <span class="file__name">Прикрепить файл</span>
             <input id="file" name="user-file" type="file" class="file__input" data-multiple-caption="{count} files selected" multiple>
           </label>
-          <input type="submit" value="Отправить" class="btn btn--blue btn__send form__btn">
+          <input type="submit" value="Отправить" class="ie-form__item btn btn--blue btn__send form__btn">
         </form>
       </div>
     </section>
